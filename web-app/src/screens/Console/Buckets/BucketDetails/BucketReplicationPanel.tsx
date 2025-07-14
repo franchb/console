@@ -314,15 +314,7 @@ const BucketReplicationPanel = () => {
         <HelpTip
           content={
             <Fragment>
-              MinIO{" "}
-              <a
-                target="blank"
-                href="https://min.io/docs/minio/kubernetes/upstream/administration/bucket-replication.html"
-              >
-                server-side bucket replication
-              </a>{" "}
-              is an automatic bucket-level configuration that synchronizes
-              objects between a source and destination bucket.
+              Server-side bucket replication is an automatic bucket-level configuration that synchronizes objects between a source and destination bucket.
             </Fragment>
           }
           placement="right"
@@ -386,19 +378,8 @@ const BucketReplicationPanel = () => {
             iconComponent={<BucketsIcon />}
             help={
               <Fragment>
-                MinIO supports server-side and client-side replication of
+                This supports server-side and client-side replication of
                 objects between source and destination buckets.
-                <br />
-                <br />
-                You can learn more at our{" "}
-                <a
-                  href="https://min.io/docs/minio/linux/administration/bucket-replication.html?ref=con"
-                  target="_blank"
-                  rel="noopener"
-                >
-                  documentation
-                </a>
-                .
               </Fragment>
             }
           />

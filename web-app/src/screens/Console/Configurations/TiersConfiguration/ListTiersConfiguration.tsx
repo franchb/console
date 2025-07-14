@@ -333,7 +333,7 @@ const ListTiersConfiguration = () => {
                   tooltip={
                     hasSetTier
                       ? ""
-                      : "You require additional permissions in order to create a new Tier. Please ask your MinIO administrator to grant you " +
+                      : "You require additional permissions in order to create a new Tier. Please ask your administrator to grant you " +
                         IAM_SCOPES.ADMIN_SET_TIER +
                         " permission in order to create a Tier."
                   }
@@ -469,23 +469,12 @@ const ListTiersConfiguration = () => {
                         iconComponent={<TiersIcon />}
                         help={
                           <Fragment>
-                            Tiers are used by the MinIO Object Lifecycle
+                            Tiers are used by the Object Lifecycle
                             Management which allows creating rules for time or
                             date based automatic transition or expiry of
-                            objects. For object transition, MinIO automatically
+                            objects. For object transition, automatically
                             moves the object to a configured remote storage
                             tier.
-                            <br />
-                            <br />
-                            You can learn more at our{" "}
-                            <a
-                              href="https://min.io/docs/minio/linux/administration/object-management/object-lifecycle-management.html?ref=con"
-                              target="_blank"
-                              rel="noopener"
-                            >
-                              documentation
-                            </a>
-                            .
                           </Fragment>
                         }
                       />
@@ -498,10 +487,10 @@ const ListTiersConfiguration = () => {
                     iconComponent={<TiersIcon />}
                     help={
                       <Fragment>
-                        Tiers are used by the MinIO Object Lifecycle Management
+                        Tiers are used by the Object Lifecycle Management
                         which allows creating rules for time or date based
                         automatic transition or expiry of objects. For object
-                        transition, MinIO automatically moves the object to a
+                        transition, automatically moves the object to a
                         configured remote storage tier.
                         <br />
                         <br />

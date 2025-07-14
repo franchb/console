@@ -12,7 +12,7 @@
     "local-storage-fallback": "^4.1.2",
     "lodash": "^4.17.21",
     "luxon": "^3.4.4",
-    "mds": "https://github.com/minio/mds.git#v1.0.3",
+    "mds": "file:../../mds",
     "react": "^18.3.1",
     "react-component-export-image": "^1.0.6",
     "react-copy-to-clipboard": "^5.1.0",
@@ -32,7 +32,7 @@
     "tinycolor2": "^1.6.0"
   },
   "scripts": {
-    "start": "PORT=5005 react-scripts start",
+    "start": "NODE_OPTIONS='--no-deprecation' PORT=5005 react-scripts start",
     "build": "react-scripts build",
     "buildistanbulcoverage": "PORT=9090 USE_BABEL_PLUGIN_ISTANBUL=1 react-app-rewired build",
     "test": "react-scripts test",
@@ -67,7 +67,7 @@
     "@types/lodash": "^4.17.7",
     "@types/luxon": "^3.4.2",
     "@types/node": "20.14.11",
-    "@types/react": "18.3.3",
+    "@types/react": "^18.3.3",
     "@types/react-copy-to-clipboard": "^5.0.7",
     "@types/react-dom": "18.3.0",
     "@types/react-redux": "^7.1.33",
@@ -97,7 +97,8 @@
     "semver": "^7.5.2",
     "ws": "^8.17.1",
     "rollup": "^4.24.0",
-    "cookie": "^0.7.2"
+    "cookie": "^0.7.2",
+    "@types/react": "^18.3.3"
   },
   "main": "index.js",
   "packageManager": "yarn@4.4.0"

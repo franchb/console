@@ -206,7 +206,7 @@ const SiteReplication = () => {
                 iconComponent={<ClustersIcon />}
                 help={
                   <Fragment>
-                    This feature allows multiple independent MinIO sites (or
+                    This feature allows multiple independent sites (or
                     clusters) that are using the same external IDentity Provider
                     (IDP) to be configured as replicas.
                     <br />
@@ -222,16 +222,6 @@ const SiteReplication = () => {
                       Add a Replication Site
                     </ActionLink>
                     .
-                    <br />
-                    You can learn more at our{" "}
-                    <a
-                      href="https://min.io/docs/minio/linux/operations/install-deploy-manage/multi-site-replication.html?ref=con"
-                      target="_blank"
-                      rel="noopener"
-                    >
-                      documentation
-                    </a>
-                    .
                   </Fragment>
                 }
               />
@@ -244,7 +234,7 @@ const SiteReplication = () => {
             iconComponent={<ClustersIcon />}
             help={
               <Fragment>
-                This feature allows multiple independent MinIO sites (or
+                This feature allows multiple independent sites (or
                 clusters) that are using the same external IDentity Provider
                 (IDP) to be configured as replicas. In this situation the set of
                 replica sites are referred to as peer sites or just sites.
@@ -268,15 +258,6 @@ const SiteReplication = () => {
                 access to a central KMS deployment server.
                 <br />
                 <br />
-                You can learn more at our{" "}
-                <a
-                  href="https://github.com/minio/minio/tree/master/docs/site-replication?ref=con"
-                  target="_blank"
-                  rel="noopener"
-                >
-                  documentation
-                </a>
-                .
               </Fragment>
             }
           />

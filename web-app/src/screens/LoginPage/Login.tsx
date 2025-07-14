@@ -16,7 +16,7 @@
 
 import React, { Fragment, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { Box, Button, Loader, LoginWrapper, RefreshIcon } from "mds";
+import { Button, Loader, RefreshIcon, ApplicationLogo } from "mds";
 import { loginStrategyType } from "./login.types";
 import MainError from "../Console/Common/MainError/MainError";
 import { AppState, useAppDispatch } from "../../store";
@@ -28,6 +28,8 @@ import { getLogoApplicationVariant, getLogoVar } from "../../config";
 import { RedirectRule } from "api/consoleApi";
 import { redirectRules } from "./login.utils";
 import { setHelpName } from "../../systemSlice";
+import styled from "styled-components";
+import get from "lodash/get";
 
 export const getTargetPath = () => {
   let targetPath = "/browser";
@@ -41,6 +43,109 @@ export const getTargetPath = () => {
   return targetPath;
 };
 
+// Styled component that respects the theme system but provides centered layout
+const CenteredLoginWrapper = styled.div(({ theme }) => {
+  return {
+    minHeight: "100vh",
+    backgroundColor: get(theme, "login.promoBG", "#000110"),
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    padding: "20px",
+    position: "relative",
+    
+    "& .loginCard": {
+      width: "100%",
+      maxWidth: "440px",
+      backgroundColor: get(theme, "login.formBG", "#fff"),
+      borderRadius: "16px",
+      boxShadow: "0 20px 60px rgba(0, 0, 0, 0.15), 0 8px 25px rgba(0, 0, 0, 0.1)",
+      overflow: "hidden",
+      position: "relative",
+      zIndex: 1,
+    },
+    
+    "& .logoSection": {
+      padding: "40px 40px 20px 40px",
+      textAlign: "center",
+      backgroundColor: get(theme, "login.formBG", "#fff"),
+      borderBottom: `1px solid ${get(theme, "login.footerDivider", "#f2f2f2")}`,
+      "& svg": {
+        maxWidth: "180px",
+        height: "auto",
+      },
+    },
+    
+    "& .formSection": {
+      padding: "40px",
+      backgroundColor: get(theme, "login.formBG", "#fff"),
+      "& .welcomeTitle": {
+        fontSize: "28px",
+        fontWeight: "700",
+        color: get(theme, "fontColor", "#000"),
+        marginBottom: "8px",
+        textAlign: "center",
+        lineHeight: "1.2",
+      },
+      "& .welcomeSubtitle": {
+        fontSize: "16px",
+        color: get(theme, "mutedText", "#6b7280"),
+        marginBottom: "32px",
+        textAlign: "center",
+        lineHeight: "1.4",
+      },
+    },
+    
+    "& .footer": {
+      padding: "24px 40px",
+      backgroundColor: get(theme, "login.formBG", "#fff"),
+      borderTop: `1px solid ${get(theme, "login.footerDivider", "#f2f2f2")}`,
+      textAlign: "center",
+      "& a": {
+        color: get(theme, "login.footerElements", "#000"),
+        fontSize: "14px",
+        textDecoration: "none",
+        "&:hover": {
+          textDecoration: "underline",
+        },
+      },
+      "& .separator": {
+        color: get(theme, "login.footerElements", "#000"),
+        marginLeft: "8px",
+        marginRight: "8px",
+      },
+    },
+    
+    "& .errorContainer": {
+      textAlign: "center",
+      padding: "20px",
+      "& .loadingLoginStrategy": {
+        textAlign: "center",
+        width: 40,
+        height: 40,
+        margin: "0 auto 16px auto",
+      },
+      "& .buttonRetry": {
+        display: "flex",
+        justifyContent: "center",
+        marginTop: "24px",
+      },
+      "& .errorTitle": {
+        color: get(theme, "signalColors.danger", "#C72C48"),
+        fontSize: "18px",
+        fontWeight: "600",
+        marginBottom: "8px",
+      },
+      "& .errorMessage": {
+        color: get(theme, "mutedText", "#6b7280"),
+        fontSize: "14px",
+        lineHeight: "1.4",
+        marginBottom: "24px",
+      },
+    },
+  };
+});
+
 const Login = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
@@ -52,12 +157,6 @@ const Login = () => {
     (state: AppState) => state.login.loadingFetchConfiguration,
   );
   const navigateTo = useSelector((state: AppState) => state.login.navigateTo);
-
-  const isK8S = useSelector((state: AppState) => state.login.isK8S);
-
-  const backgroundAnimation = useSelector(
-    (state: AppState) => state.login.backgroundAnimation,
-  );
 
   useEffect(() => {
     if (navigateTo !== "") {
@@ -91,31 +190,20 @@ const Login = () => {
     }
     default:
       loginComponent = (
-        <Box
-          sx={{
-            textAlign: "center",
-            "& .loadingLoginStrategy": {
-              textAlign: "center",
-              width: 40,
-              height: 40,
-            },
-            "& .buttonRetry": {
-              display: "flex",
-              justifyContent: "center",
-            },
-          }}
-        >
+        <div className="errorContainer">
           {loadingFetchConfiguration ? (
-            <Loader className={"loadingLoginStrategy"} />
+            <Fragment>
+              <Loader className={"loadingLoginStrategy"} />
+              <p style={{ margin: 0 }}>Connecting to server...</p>
+            </Fragment>
           ) : (
             <Fragment>
-              <Box>
-                <p style={{ textAlign: "center" }}>
-                  An error has occurred
-                  <br />
-                  The backend cannot be reached.
-                </p>
-              </Box>
+              <div className="errorTitle">Connection Error</div>
+              <div className="errorMessage">
+                An error has occurred
+                <br />
+                The backend cannot be reached.
+              </div>
               <div className={"buttonRetry"}>
                 <Button
                   onClick={() => {
@@ -130,14 +218,8 @@ const Login = () => {
               </div>
             </Fragment>
           )}
-        </Box>
+        </div>
       );
-  }
-
-  let docsURL = "https://min.io/docs/minio/linux/index.html?ref=con";
-  if (isK8S) {
-    docsURL =
-      "https://min.io/docs/minio/kubernetes/upstream/index.html?ref=con";
   }
 
   useEffect(() => {
@@ -148,68 +230,26 @@ const Login = () => {
   return (
     <Fragment>
       <MainError />
-      <LoginWrapper
-        logoProps={{
-          applicationName: getLogoApplicationVariant(),
-          subVariant: getLogoVar(),
-        }}
-        form={loginComponent}
-        formFooter={
-          <Box
-            sx={{
-              "& .separator": {
-                marginLeft: 4,
-                marginRight: 4,
-              },
-            }}
-          >
-            <a href={docsURL} target="_blank" rel="noopener">
-              Documentation
-            </a>
-            <span className={"separator"}>|</span>
-            <a
-              href="https://github.com/minio/minio"
-              target="_blank"
-              rel="noopener"
-            >
-              GitHub
-            </a>
-            <span className={"separator"}>|</span>
-            <a
-              href="https://subnet.min.io/?ref=con"
-              target="_blank"
-              rel="noopener"
-            >
-              Support
-            </a>
-            <span className={"separator"}>|</span>
-            <a
-              href="https://min.io/download/?ref=con"
-              target="_blank"
-              rel="noopener"
-            >
-              Download
-            </a>
-          </Box>
-        }
-        promoHeader={
-          <span style={{ fontSize: 28 }}>High-Performance Object Store</span>
-        }
-        promoInfo={
-          <span style={{ fontSize: 14, lineHeight: 1 }}>
-            MinIO is a cloud-native object store built to run on any
-            infrastructure - public, private or edge clouds. Primary use cases
-            include data lakes, databases, AI/ML, SaaS applications and fast
-            backup & recovery. MinIO is dual licensed under GNU AGPL v3 and
-            commercial license. To learn more, visit{" "}
-            <a href={"https://min.io/?ref=con"} target="_blank" rel="noopener">
-              www.min.io
-            </a>
-            .
-          </span>
-        }
-        backgroundAnimation={backgroundAnimation}
-      />
+      <CenteredLoginWrapper>
+        <div className="loginCard">
+          {/* Logo Section */}
+          <div className="logoSection">
+            <ApplicationLogo
+              applicationName={getLogoApplicationVariant()}
+              subVariant={getLogoVar()}
+            />
+          </div>
+
+          {/* Form Section */}
+          <div className="formSection">
+            <h1 className="welcomeTitle">Welcome back!</h1>
+            <p className="welcomeSubtitle">Sign in to access your object storage console</p>
+            {loginComponent}
+          </div>
+
+          
+        </div>
+      </CenteredLoginWrapper>
     </Fragment>
   );
 };

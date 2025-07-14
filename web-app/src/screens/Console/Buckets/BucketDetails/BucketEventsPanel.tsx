@@ -235,21 +235,10 @@ const BucketEventsPanel = () => {
               iconComponent={<LambdaIcon />}
               help={
                 <Fragment>
-                  MinIO bucket notifications allow administrators to send
+                  Bucket notifications allow administrators to send
                   notifications to supported external services on certain object
-                  or bucket events. MinIO supports bucket and object-level S3
+                  or bucket events. This supports bucket and object-level S3
                   events similar to the Amazon S3 Event Notifications.
-                  <br />
-                  <br />
-                  You can learn more at our{" "}
-                  <a
-                    href="https://min.io/docs/minio/linux/administration/monitoring/bucket-notifications.html?ref=con"
-                    target="_blank"
-                    rel="noopener"
-                  >
-                    documentation
-                  </a>
-                  .
                 </Fragment>
               }
             />

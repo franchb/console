@@ -50,4 +50,4 @@ public.crt
 .eslintcache
 
 # Environment variables
-.env
+.envweb-app/build/

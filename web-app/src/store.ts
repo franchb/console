@@ -34,8 +34,6 @@ import registerReducer from "./screens/Console/Support/registerSlice";
 import destinationSlice from "./screens/Console/EventDestinations/destinationsSlice";
 import { objectBrowserWSMiddleware } from "./websockets/objectBrowserWSMiddleware";
 
-let objectsWS: WebSocket;
-
 const rootReducer = combineReducers({
   system: systemReducer,
   login: loginReducer,
@@ -53,6 +51,9 @@ const rootReducer = combineReducers({
   license: licenseReducer,
   destination: destinationSlice,
 });
+
+// WebSocket will be initialized when needed
+let objectsWS: WebSocket | undefined;
 
 export const store = configureStore({
   reducer: rootReducer,

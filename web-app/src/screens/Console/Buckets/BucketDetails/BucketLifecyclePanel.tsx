@@ -322,15 +322,7 @@ const BucketLifecyclePanel = () => {
         <HelpTip
           content={
             <Fragment>
-              MinIO derives it’s behavior and syntax from{" "}
-              <a
-                target="blank"
-                href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lifecycle-mgmt.html"
-              >
-                S3 lifecycle
-              </a>{" "}
-              for compatibility in migrating workloads and lifecycle rules from
-              S3 to MinIO.
+              This derives it’s behavior and syntax from S3 lifecycle for compatibility in migrating workloads and lifecycle rules from S3.
             </Fragment>
           }
           placement="right"
@@ -368,21 +360,10 @@ const BucketLifecyclePanel = () => {
               iconComponent={<TiersIcon />}
               help={
                 <Fragment>
-                  MinIO Object Lifecycle Management allows creating rules for
+                  Object Lifecycle Management allows creating rules for
                   time or date based automatic transition or expiry of objects.
-                  For object transition, MinIO automatically moves the object to
+                  For object transition, it automatically moves the object to
                   a configured remote storage tier.
-                  <br />
-                  <br />
-                  You can learn more at our{" "}
-                  <a
-                    href="https://min.io/docs/minio/linux/administration/object-management/object-lifecycle-management.html?ref=con"
-                    target="_blank"
-                    rel="noopener"
-                  >
-                    documentation
-                  </a>
-                  .
                 </Fragment>
               }
             />

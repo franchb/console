@@ -18,7 +18,6 @@ import React, { Fragment, useCallback, useEffect, useState } from "react";
 import {
   Box,
   Grid,
-  HelpBox,
   PageLayout,
   ScreenTitle,
   SettingsIcon,
@@ -107,7 +106,7 @@ const ConfigurationOptions = () => {
         <Grid item xs={12} id={"settings-container"}>
           <ScreenTitle
             icon={<SettingsIcon />}
-            title={"MinIO Configuration:"}
+            title={"Configuration:"}
             actions={
               <Box
                 sx={{
@@ -153,29 +152,6 @@ const ConfigurationOptions = () => {
                   element={<Navigate to={`${IAM_PAGES.SETTINGS}/region`} />}
                 />
               </Routes>
-            }
-          />
-        </Grid>
-        <Grid item xs={12} sx={{ paddingTop: "15px" }}>
-          <HelpBox
-            title={"Learn more about Configurations"}
-            iconComponent={<SettingsIcon />}
-            help={
-              <Fragment>
-                MinIO supports a variety of configurations ranging from
-                encryption, compression, region, notifications, etc.
-                <br />
-                <br />
-                You can learn more at our{" "}
-                <a
-                  href="https://min.io/docs/minio/linux/reference/minio-mc-admin/mc-admin-config.html?ref=con#id4"
-                  target="_blank"
-                  rel="noopener"
-                >
-                  documentation
-                </a>
-                .
-              </Fragment>
             }
           />
         </Grid>

@@ -69,51 +69,8 @@ const TierTypeSelector = () => {
               title={"Tier Types"}
               help={
                 <Fragment>
-                  MinIO supports creating object transition lifecycle management
-                  rules, where MinIO can automatically move an object to a
-                  remote storage “tier”.
-                  <br />
-                  <br />
-                  MinIO supports the following Tier types:
-                  <br />
-                  <ul>
-                    <li>
-                      <a
-                        href="https://min.io/docs/minio/kubernetes/upstream/administration/object-management/transition-objects-to-s3.html#minio-lifecycle-management-transition-to-s3?ref=con"
-                        target="_blank"
-                        rel="noopener"
-                      >
-                        MinIO or other S3-compatible storage
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="https://min.io/docs/minio/kubernetes/upstream/administration/object-management/transition-objects-to-s3.html#minio-lifecycle-management-transition-to-s3?ref=con"
-                        target="_blank"
-                        rel="noopener"
-                      >
-                        Amazon S3
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="https://min.io/docs/minio/kubernetes/upstream/administration/object-management/transition-objects-to-gcs.html#minio-lifecycle-management-transition-to-gcs?ref=con"
-                        target="_blank"
-                        rel="noopener"
-                      >
-                        Google Cloud Storage
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="https://min.io/docs/minio/kubernetes/upstream/administration/object-management/transition-objects-to-azure.html#minio-lifecycle-management-transition-to-azure?ref=con"
-                        target="_blank"
-                        rel="noopener"
-                      >
-                        Microsoft Azure Blob Storage
-                      </a>
-                    </li>
-                  </ul>
+                  Supports creating object lifecycle management rules that
+                  automatically move objects to a remote storage “tier.”
                 </Fragment>
               }
             />

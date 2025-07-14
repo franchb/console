@@ -24,9 +24,6 @@ interface IContent {
 }
 
 interface IAddIDPConfigurationHelpBoxProps {
-  helpText: string;
-  docLink: string;
-  docText: string;
   contents: IContent[];
 }
 
@@ -58,9 +55,6 @@ const FeatureItem = ({
 };
 
 const AddIDPConfigurationHelpBox = ({
-  helpText,
-  docLink,
-  docText,
   contents,
 }: IAddIDPConfigurationHelpBoxProps) => {
   return (
@@ -91,7 +85,6 @@ const AddIDPConfigurationHelpBox = ({
         }}
       >
         <HelpIconFilled />
-        <div>{helpText}</div>
       </Box>
       <Box sx={{ fontSize: "14px", marginBottom: "15px" }}>
         {contents.map((content, index) => (
@@ -107,11 +100,6 @@ const AddIDPConfigurationHelpBox = ({
             <Box sx={{ paddingBottom: "20px" }}>{content.text}</Box>
           </Fragment>
         ))}
-        <Box sx={{ paddingBottom: "20px" }}>
-          <a href={docLink} target="_blank" rel="noopener">
-            {docText}
-          </a>
-        </Box>
       </Box>
     </Box>
   );

@@ -57,7 +57,7 @@ const SetPolicy = ({
       groups = selectedGroups;
     } else {
       if (selectedUser !== null) {
-        users = [selectedUser.accessKey] || [" "];
+        users = [selectedUser.accessKey];
       }
     }
 

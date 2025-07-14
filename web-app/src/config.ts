@@ -34,7 +34,7 @@ type LogoVar =
   | undefined;
 
 export const getLogoVar = (): LogoVar => {
-  let logoVar: LogoVar = "AGPL";
+  let logoVar: LogoVar = "enterpriseosvertical";
   switch (MinIOPlan.toLowerCase()) {
     case "enterprise-lite":
       logoVar = "enterpriseos";
@@ -49,7 +49,7 @@ export const getLogoVar = (): LogoVar => {
       logoVar = "standard";
       break;
     default:
-      logoVar = "AGPL";
+      logoVar = "enterpriseos";
       break;
   }
   return logoVar;

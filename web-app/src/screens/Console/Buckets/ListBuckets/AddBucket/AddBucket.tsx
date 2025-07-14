@@ -241,7 +241,7 @@ const AddBucket = () => {
               title={"Buckets"}
               help={
                 <Fragment>
-                  MinIO uses buckets to organize objects. A bucket is similar to
+                  Buckets are used to organize objects. A bucket is similar to
                   a folder or directory in a filesystem, where each bucket can
                   hold an arbitrary number of objects.
                   <br />
@@ -292,15 +292,7 @@ const AddBucket = () => {
                     <ErrorBox>
                       These features are unavailable in a single-disk setup.
                       <br />
-                      Please deploy a server in{" "}
-                      <a
-                        href="https://min.io/docs/minio/linux/operations/install-deploy-manage/deploy-minio-multi-node-multi-drive.html?ref=con"
-                        target="_blank"
-                        rel="noopener"
-                      >
-                        Distributed Mode
-                      </a>{" "}
-                      to use these features.
+                      Please deploy a server in Distributed Mode to use these features.
                     </ErrorBox>
                     <br />
                     <br />
@@ -364,30 +356,9 @@ const AddBucket = () => {
                           be disabled <br />
                         </strong>
                       )}
-                      MinIO supports keeping multiple{" "}
-                      <a
-                        href="https://min.io/docs/minio/kubernetes/upstream/administration/object-management/object-versioning.html#minio-bucket-versioning"
-                        target="blank"
-                      >
-                        versions
-                      </a>{" "}
-                      of an object in a single bucket.
+                      This supports keeping multiple versions of an object in a single bucket.
                       <br />
-                      Versioning is required to enable{" "}
-                      <a
-                        href="https://min.io/docs/minio/macos/administration/object-management.html#object-retention"
-                        target="blank"
-                      >
-                        Object Locking
-                      </a>{" "}
-                      and{" "}
-                      <a
-                        href="https://min.io/docs/minio/macos/administration/object-management/object-retention.html#object-retention-modes"
-                        target="blank"
-                      >
-                        Retention
-                      </a>
-                      .
+                      Versioning is required to enable Object Locking and Retention.
                     </Fragment>
                   }
                   helpTipPlacement="right"
@@ -404,13 +375,9 @@ const AddBucket = () => {
                       indicatorLabels={["Enabled", "Disabled"]}
                       helpTip={
                         <Fragment>
-                          You can choose to{" "}
-                          <a href="https://min.io/docs/minio/windows/administration/object-management/object-versioning.html#exclude-folders-from-versioning">
-                            exclude folders and prefixes
-                          </a>{" "}
-                          from versioning if Object Locking is not enabled.
+                          You can choose to exclude folders and prefixes from versioning if Object Locking is not enabled.
                           <br />
-                          MinIO requires versioning to support replication.
+                          This requires versioning to support replication.
                           <br />
                           Objects in excluded prefixes do not replicate to any
                           peer site or remote site.
@@ -472,20 +439,10 @@ const AddBucket = () => {
                           be disabled <br />
                         </strong>
                       )}
-                      You can only enable{" "}
-                      <a
-                        href="https://min.io/docs/minio/macos/administration/object-management.html#object-retention"
-                        target="blank"
-                      >
-                        Object Locking
-                      </a>{" "}
-                      when first creating a bucket.
+                      You can only enable Object Locking when first creating a bucket.
                       <br />
                       <br />
-                      <a href="https://min.io/docs/minio/windows/administration/object-management/object-versioning.html#exclude-folders-from-versioning">
-                        Exclude folders and prefixes
-                      </a>{" "}
-                      options will not be available if this option is enabled.
+                      Exclude folders and prefixes options will not be available if this option is enabled.
                     </Fragment>
                   }
                   helpTipPlacement="right"
@@ -502,15 +459,7 @@ const AddBucket = () => {
                   disabled={!distributedSetup}
                   helpTip={
                     <Fragment>
-                      Setting a{" "}
-                      <a
-                        href="https://min.io/docs/minio/linux/reference/minio-mc/mc-quota-set.html"
-                        target="blank"
-                      >
-                        quota
-                      </a>{" "}
-                      assigns a hard limit to a bucket beyond which MinIO does
-                      not allow writes.
+                      Setting a quota assigns a hard limit to a bucket beyond which this does not allow writes.
                     </Fragment>
                   }
                   helpTipPlacement="right"
@@ -559,14 +508,7 @@ const AddBucket = () => {
                     label={"Retention"}
                     helpTip={
                       <Fragment>
-                        MinIO supports setting both{" "}
-                        <a
-                          href="https://min.io/docs/minio/macos/administration/object-management/object-retention.html#configure-bucket-default-object-retention"
-                          target="blank"
-                        >
-                          bucket-default
-                        </a>{" "}
-                        and per-object retention rules.
+                        This supports setting both bucket-default and per-object retention rules.
                         <br />
                         <br /> For per-object retention settings, defer to the
                         documentation for the PUT operation used by your
@@ -597,24 +539,10 @@ const AddBucket = () => {
                       helpTip={
                         <Fragment>
                           {" "}
-                          <a
-                            href="https://min.io/docs/minio/macos/administration/object-management/object-retention.html#minio-object-locking-compliance"
-                            target="blank"
-                          >
-                            Compliance
-                          </a>{" "}
-                          lock protects Objects from write operations by all
-                          users, including the MinIO root user.
+                          Compliance lock protects Objects from write operations by all users, including the root user.
                           <br />
                           <br />
-                          <a
-                            href="https://min.io/docs/minio/macos/administration/object-management/object-retention.html#minio-object-locking-governance"
-                            target="blank"
-                          >
-                            Governance
-                          </a>{" "}
-                          lock protects Objects from write operations by
-                          non-privileged users.
+                          Governance lock protects Objects from write operations by non-privileged users.
                         </Fragment>
                       }
                       helpTipPlacement="right"

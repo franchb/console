@@ -358,11 +358,11 @@ const ListUsers = () => {
                     iconComponent={<UsersIcon />}
                     help={
                       <Fragment>
-                        A MinIO user consists of a unique access key (username)
+                        A user consists of a unique access key (username)
                         and corresponding secret key (password). Clients must
                         authenticate their identity by specifying both a valid
                         access key (username) and the corresponding secret key
-                        (password) of an existing MinIO user.
+                        (password) of an existing user.
                         <br />
                         Groups provide a simplified method for managing shared
                         permissions among users with common access patterns and
@@ -372,7 +372,7 @@ const ListUsers = () => {
                         Users inherit access permissions to data and resources
                         through the groups they belong to.
                         <br />
-                        MinIO uses Policy-Based Access Control (PBAC) to define
+                        This uses Policy-Based Access Control (PBAC) to define
                         the authorized actions and resources to which an
                         authenticated user has access. Each policy describes one
                         or more actions and conditions that outline the
@@ -380,20 +380,11 @@ const ListUsers = () => {
                         <br />
                         <br />
                         Each user can access only those resources and operations
-                        which are explicitly granted by the built-in role. MinIO
-                        denies access to any other resource or action by
-                        default.
+                        which are explicitly granted by the built-in role. This
+                        denies access to any other resource or action by default.
                         <br />
                         <br />
-                        You can learn more at our{" "}
-                        <a
-                          href="https://min.io/docs/minio/kubernetes/upstream/administration/identity-access-management/minio-user-management.html?ref=con"
-                          target="_blank"
-                          rel="noopener"
-                        >
-                          documentation
-                        </a>
-                        .
+                        
                       </Fragment>
                     }
                   />
@@ -407,12 +398,12 @@ const ListUsers = () => {
                       iconComponent={<UsersIcon />}
                       help={
                         <Fragment>
-                          A MinIO user consists of a unique access key
+                          A user consists of a unique access key
                           (username) and corresponding secret key (password).
                           Clients must authenticate their identity by specifying
                           both a valid access key (username) and the
                           corresponding secret key (password) of an existing
-                          MinIO user.
+                          user.
                           <br />
                           Groups provide a simplified method for managing shared
                           permissions among users with common access patterns
@@ -422,7 +413,7 @@ const ListUsers = () => {
                           Users inherit access permissions to data and resources
                           through the groups they belong to.
                           <br />
-                          MinIO uses Policy-Based Access Control (PBAC) to
+                          This uses Policy-Based Access Control (PBAC) to
                           define the authorized actions and resources to which
                           an authenticated user has access. Each policy
                           describes one or more actions and conditions that
@@ -431,7 +422,7 @@ const ListUsers = () => {
                           <br />
                           Each user can access only those resources and
                           operations which are explicitly granted by the
-                          built-in role. MinIO denies access to any other
+                          built-in role. This denies access to any other
                           resource or action by default.
                           <SecureComponent
                             scopes={[
