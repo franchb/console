@@ -41,16 +41,11 @@ let wsInFlight: boolean = false;
 let currentRequestID: number = 0;
 
 export const objectBrowserWSMiddleware = (
-  objectsWS: WebSocket | undefined,
+  objectsWS: WebSocket,
 ): Middleware<{}, AppState> => {
   return (storeApi) => (next) => (action) => {
     const dispatch = storeApi.dispatch;
     const storeState = storeApi.getState();
-
-    // If WebSocket is not available, just pass the action through
-    if (!objectsWS) {
-      return next(action);
-    }
 
     const allowResources = get(
       storeState,
