@@ -49,7 +49,7 @@ export const getLogoVar = (): LogoVar => {
       logoVar = "standard";
       break;
     default:
-      logoVar = "enterpriseos";
+      logoVar = undefined;
       break;
   }
   return logoVar;
