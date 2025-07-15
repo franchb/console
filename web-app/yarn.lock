@@ -12037,9 +12037,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"mds@https://github.com/opens3/mds.git":
+"mds@file:../../mds::locator=web-app%40workspace%3A.":
   version: 1.1.4
-  resolution: "mds@https://github.com/opens3/mds.git#commit=cbcdb0720a3149a7113501691cc285fdd984e370"
+  resolution: "mds@file:../../mds#../../mds::hash=5b8569&locator=web-app%40workspace%3A."
   dependencies:
     "@storybook/test": "npm:^8.6.14"
     "@types/styled-components": "npm:^5.1.34"
@@ -12049,7 +12049,7 @@ __metadata:
     react-calendar: "npm:^5.1.0"
     react-virtualized: "npm:^9.22.6"
     styled-components: "npm:^5.3.11"
-  checksum: 10c0/07148b39d89f28a88c60415995de8498c032aba9e4727c1b704abeb66c3163cf3afe7e0e32e580857f76e3736daadfb37a509a5fe91ca6898b8dfd33cf1ff2af
+  checksum: 10c0/a88069ed2f0f438eeba22a2d5acc35c40853833b9a0cdadc38275ffe50668bba0d0fa76e56e0b0c8cba6c46339f7b44afd349e61467d023b7e72e9c135a7a8f7
   languageName: node
   linkType: hard
 
@@ -18674,7 +18674,7 @@ __metadata:
     local-storage-fallback: "npm:^4.1.2"
     lodash: "npm:^4.17.21"
     luxon: "npm:^3.4.4"
-    mds: "https://github.com/opens3/mds.git"
+    mds: "file:../../mds"
     minio: "npm:^8.0.1"
     nyc: "npm:^15.1.0"
     prettier: "npm:3.3.3"

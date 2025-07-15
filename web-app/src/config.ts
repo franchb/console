@@ -62,7 +62,7 @@ export const getLogoApplicationVariant =
       case "enterprise-plus":
         return "minio";
       default:
-        return "console";
+        return "minio";
     }
   };
 

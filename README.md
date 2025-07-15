@@ -2,7 +2,7 @@
 
 ![license](https://img.shields.io/badge/license-AGPL%20V3-blue)
 
-Opens3 Console is a community-maintained fork of MinIO Console v1.7.3, preserving the full feature set that made the original console great. This fork exists to maintain and enhance the rich user interface capabilities that the community has come to rely on.
+Opens3 Console is a community-maintained fork of MinIO Console, preserving the full feature set that made the original console great. This fork exists to maintain and enhance the rich user interface capabilities that the community has come to rely on.
 
 ## Quick Start
 
@@ -10,8 +10,9 @@ Opens3 Console is a community-maintained fork of MinIO Console v1.7.3, preservin
 
 You can use our official multi-architecture image (supports both amd64 and arm64):
 
+### Pull and run the official image
+
 ```bash
-# Pull and run the official image
 docker run -p 9090:9090 \
   -e CONSOLE_MINIO_SERVER="https://your-minio-server" \
   -e CONSOLE_PBKDF_PASSPHRASE="your-secure-passphrase" \
@@ -19,26 +20,32 @@ docker run -p 9090:9090 \
   opens3/console:latest
 ```
 
-### Option 2: Building from Source
+### Option 2: Build from Source
 
-Requirements:
-
-- Node.js 20 or later with Yarn 4.4.0
-- Go 1.24 or later
-- Make
+First, clone the repository:
 
 ```bash
-# Build everything
-./build.sh
+git clone https://github.com/opens3/console.git
+cd console
+```
 
-# Run the console (replace with your values)
+**Build Command:**
+
+```bash
+chmod +x build.sh
+./build.sh
+```
+
+After the build is complete, set the required environment variables and start the console:
+
+```bash
 export CONSOLE_MINIO_SERVER="https://your-minio-server"
 export CONSOLE_PBKDF_PASSPHRASE="your-secure-passphrase"
 export CONSOLE_PBKDF_SALT="your-secure-salt"
 ./console server
 ```
 
-The console will be available at http://localhost:9090
+The console will be available at `http://localhost:9090`.
 
 ## Features
 
@@ -57,8 +64,7 @@ The console will be available at http://localhost:9090
 
 Recent changes to the official MinIO Console have removed several important features that many users depend on. The Opens3 Console fork maintains these features and ensures they remain available to the community. Our goals are to:
 
-- Preserve the complete feature set from MinIO Console v1.7.3
-- Maintain compatibility with MinIO servers
+- Maintain compatibility with MinIO server
 - Continue community-driven development and improvements
 - Keep the console fully open source under AGPL v3
 - Ensure users have access to a feature-rich, self-hosted management UI
