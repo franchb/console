@@ -4,6 +4,8 @@
 
 Opens3 Console is a community-maintained fork of MinIO Console, preserving the full feature set that made the original console great. This fork exists to maintain and enhance the rich user interface capabilities that the community has come to rely on.
 
+### **⚠️ Not affiliated with MinIO, Inc.**
+
 ## Quick Start
 
 ### Option 1: Using Docker (Recommended)
