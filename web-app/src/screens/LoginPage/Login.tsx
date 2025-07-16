@@ -43,108 +43,106 @@ export const getTargetPath = () => {
   return targetPath;
 };
 
-// Styled component that respects the theme system but provides centered layout
-const CenteredLoginWrapper = styled.div(({ theme }) => {
-  return {
-    minHeight: "100vh",
-    backgroundColor: get(theme, "login.promoBG", "#000110"),
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
+// Styled component that always uses dark theme for login page
+const CenteredLoginWrapper = styled.div(() => ({
+  minHeight: "100vh",
+  backgroundColor: "#000110", // Dark theme background
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  padding: "20px",
+  position: "relative" as const,
+  
+  "& .loginCard": {
+    width: "100%",
+    maxWidth: "440px",
+    backgroundColor: "#283140", // Dark theme card background
+    borderRadius: "16px",
+    boxShadow: "0 20px 60px rgba(0, 0, 0, 0.3), 0 8px 25px rgba(0, 0, 0, 0.2)",
+    overflow: "hidden",
+    position: "relative" as const,
+    zIndex: 1,
+  },
+  
+  "& .logoSection": {
+    padding: "40px 40px 20px 40px",
+    textAlign: "center" as const,
+    backgroundColor: "#283140", // Dark theme card background
+    borderBottom: "1px solid #545D6A", // Dark theme divider
+    "& svg": {
+      maxWidth: "180px",
+      height: "auto",
+    },
+  },
+  
+  "& .formSection": {
+    padding: "40px",
+    backgroundColor: "#283140", // Dark theme card background
+    "& .welcomeTitle": {
+      fontSize: "28px",
+      fontWeight: "700",
+      color: "#C4C9D0", // Dark theme font color
+      marginBottom: "8px",
+      textAlign: "center" as const,
+      lineHeight: "1.2",
+    },
+    "& .welcomeSubtitle": {
+      fontSize: "16px",
+      color: "#8E98A9", // Dark theme muted text
+      marginBottom: "32px",
+      textAlign: "center" as const,
+      lineHeight: "1.4",
+    },
+  },
+  
+  "& .footer": {
+    padding: "24px 40px",
+    backgroundColor: "#283140", // Dark theme card background
+    borderTop: "1px solid #545D6A", // Dark theme divider
+    textAlign: "center" as const,
+    "& a": {
+      color: "#85B3EE", // Dark theme footer elements
+      fontSize: "14px",
+      textDecoration: "none",
+      "&:hover": {
+        textDecoration: "underline",
+      },
+    },
+    "& .separator": {
+      color: "#85B3EE", // Dark theme footer elements
+      marginLeft: "8px",
+      marginRight: "8px",
+    },
+  },
+  
+  "& .errorContainer": {
+    textAlign: "center" as const,
     padding: "20px",
-    position: "relative",
-    
-    "& .loginCard": {
-      width: "100%",
-      maxWidth: "440px",
-      backgroundColor: get(theme, "login.formBG", "#fff"),
-      borderRadius: "16px",
-      boxShadow: "0 20px 60px rgba(0, 0, 0, 0.15), 0 8px 25px rgba(0, 0, 0, 0.1)",
-      overflow: "hidden",
-      position: "relative",
-      zIndex: 1,
+    "& .loadingLoginStrategy": {
+      textAlign: "center" as const,
+      width: 40,
+      height: 40,
+      margin: "0 auto 16px auto",
     },
-    
-    "& .logoSection": {
-      padding: "40px 40px 20px 40px",
-      textAlign: "center",
-      backgroundColor: get(theme, "login.formBG", "#fff"),
-      borderBottom: `1px solid ${get(theme, "login.footerDivider", "#f2f2f2")}`,
-      "& svg": {
-        maxWidth: "180px",
-        height: "auto",
-      },
+    "& .buttonRetry": {
+      display: "flex",
+      justifyContent: "center",
+      marginTop: "24px",
     },
-    
-    "& .formSection": {
-      padding: "40px",
-      backgroundColor: get(theme, "login.formBG", "#fff"),
-      "& .welcomeTitle": {
-        fontSize: "28px",
-        fontWeight: "700",
-        color: get(theme, "fontColor", "#000"),
-        marginBottom: "8px",
-        textAlign: "center",
-        lineHeight: "1.2",
-      },
-      "& .welcomeSubtitle": {
-        fontSize: "16px",
-        color: get(theme, "mutedText", "#6b7280"),
-        marginBottom: "32px",
-        textAlign: "center",
-        lineHeight: "1.4",
-      },
+    "& .errorTitle": {
+      color: "#FF3958", // Dark theme danger color
+      fontSize: "18px",
+      fontWeight: "600",
+      marginBottom: "8px",
     },
-    
-    "& .footer": {
-      padding: "24px 40px",
-      backgroundColor: get(theme, "login.formBG", "#fff"),
-      borderTop: `1px solid ${get(theme, "login.footerDivider", "#f2f2f2")}`,
-      textAlign: "center",
-      "& a": {
-        color: get(theme, "login.footerElements", "#000"),
-        fontSize: "14px",
-        textDecoration: "none",
-        "&:hover": {
-          textDecoration: "underline",
-        },
-      },
-      "& .separator": {
-        color: get(theme, "login.footerElements", "#000"),
-        marginLeft: "8px",
-        marginRight: "8px",
-      },
+    "& .errorMessage": {
+      color: "#8E98A9", // Dark theme muted text
+      fontSize: "14px",
+      lineHeight: "1.4",
+      marginBottom: "24px",
     },
-    
-    "& .errorContainer": {
-      textAlign: "center",
-      padding: "20px",
-      "& .loadingLoginStrategy": {
-        textAlign: "center",
-        width: 40,
-        height: 40,
-        margin: "0 auto 16px auto",
-      },
-      "& .buttonRetry": {
-        display: "flex",
-        justifyContent: "center",
-        marginTop: "24px",
-      },
-      "& .errorTitle": {
-        color: get(theme, "signalColors.danger", "#C72C48"),
-        fontSize: "18px",
-        fontWeight: "600",
-        marginBottom: "8px",
-      },
-      "& .errorMessage": {
-        color: get(theme, "mutedText", "#6b7280"),
-        fontSize: "14px",
-        lineHeight: "1.4",
-        marginBottom: "24px",
-      },
-    },
-  };
-});
+  },
+}));
 
 const Login = () => {
   const dispatch = useAppDispatch();

@@ -28,6 +28,7 @@ import {
   Select,
   UserFilledIcon,
 } from "mds";
+import styled from "styled-components";
 import {
   setAccessKey,
   setDisplayEmbeddedIDPForms,
@@ -40,6 +41,115 @@ import { AppState, useAppDispatch } from "../../store";
 import { useSelector } from "react-redux";
 import { doLoginAsync } from "./loginThunks";
 import { RedirectRule } from "api/consoleApi";
+
+// Dark theme wrapper for form components
+const DarkFormWrapper = styled.div(() => ({
+  width: "100%",
+  
+  // Global input styling with autofill override
+  "& input": {
+    backgroundColor: "#1C2436 !important",
+    borderColor: "#8E98A9 !important",
+    color: "#C4C9D0 !important",
+    "&::placeholder": {
+      color: "#8E98A9 !important",
+    },
+    "&:focus": {
+      borderColor: "#58FAB1 !important",
+      boxShadow: "0 0 0 1px #58FAB1 !important",
+    },
+    // Keep autofill styles dark
+    "&:-webkit-autofill, &:-webkit-autofill:hover, &:-webkit-autofill:focus, &:-webkit-autofill:active": {
+      "-webkit-box-shadow": "0 0 0 30px #1C2436 inset !important",
+      "-webkit-text-fill-color": "#C4C9D0 !important",
+    },
+  },
+  
+  // Input field containers
+  "& .MuiInputBase-root": {
+    backgroundColor: "#1C2436 !important",
+    borderColor: "#8E98A9 !important",
+    color: "#C4C9D0 !important",
+  },
+  
+  "& .MuiOutlinedInput-root": {
+    backgroundColor: "#1C2436 !important",
+    "& fieldset": {
+      borderColor: "#8E98A9 !important",
+    },
+    "&:hover fieldset": {
+      borderColor: "#8E98A9 !important",
+    },
+    "&.Mui-focused fieldset": {
+      borderColor: "#58FAB1 !important",
+    },
+  },
+  
+  // Button styling - clean white/gray theme
+  "& button": {
+    backgroundColor: "#FFFFFF !important",
+    color: "#000000 !important",
+    border: "1px solid #E0E0E0 !important",
+    "&:hover": {
+      backgroundColor: "#F5F5F5 !important",
+    },
+    "&:disabled": {
+      backgroundColor: "#9E9E9E !important",
+      color: "#616161 !important",
+      border: "1px solid #BDBDBD !important",
+    },
+  },
+  
+  // More specific button targeting
+  "& .MuiButton-root, & [role='button']": {
+    backgroundColor: "#FFFFFF !important",
+    color: "#000000 !important",
+    border: "1px solid #E0E0E0 !important",
+    "&:hover": {
+      backgroundColor: "#F5F5F5 !important",
+    },
+    "&:disabled": {
+      backgroundColor: "#9E9E9E !important",
+      color: "#616161 !important",
+    },
+  },
+  
+  // Select dropdown styling
+  "& select": {
+    backgroundColor: "#1C2436 !important",
+    borderColor: "#8E98A9 !important",
+    color: "#C4C9D0 !important",
+  },
+  
+  // Progress bar
+  "& .MuiLinearProgress-root": {
+    backgroundColor: "#4B586A !important",
+    "& .MuiLinearProgress-bar": {
+      backgroundColor: "#58FAB1 !important",
+    },
+  },
+  
+  // Keep input icons white
+  "& .MuiInputAdornment-root svg, & .MuiInputAdornment-root svg path": {
+    color: "#FFFFFF !important",
+    fill: "#FFFFFF !important",
+  },
+  
+  // Clean input targeting - only specific inputs
+  "& input[type='text'], & input[type='password'], & input[name]": {
+    backgroundColor: "#1C2436 !important",
+    border: "1px solid #8E98A9 !important",
+    borderRadius: "4px !important",
+    color: "#C4C9D0 !important",
+    "&::placeholder": {
+      color: "#8E98A9 !important",
+    },
+    "&:focus": {
+      borderColor: "#58FAB1 !important",
+      outline: "none !important",
+    },
+  },
+}));
 
 const StrategyForm = ({ redirectRules }: { redirectRules: RedirectRule[] }) => {
   const dispatch = useAppDispatch();
@@ -114,164 +224,168 @@ const StrategyForm = ({ redirectRules }: { redirectRules: RedirectRule[] }) => {
   };
 
   return (
-    <React.Fragment>
-      {redirectRules.length > 0 && (
-        <Fragment>
-          <Box sx={{ marginBottom: 40 }}>
-            <Button
-              id={"SSOSelector"}
-              variant={"subAction"}
-              label={
-                redirectRules.length === 1
-                  ? `${redirectRules[0].displayName}${
-                      redirectRules[0].serviceType
-                        ? ` - ${redirectRules[0].serviceType}`
-                        : ""
-                    }`
-                  : `Login with SSO`
-              }
-              fullWidth
-              sx={{ height: 50 }}
-              onClick={(e) => {
-                if (redirectRules.length > 1) {
-                  ssoOptionsSetOpen(!ssoOptionsOpen);
-                  setAnchorEl(e.currentTarget);
-                  return;
-                }
-                submitSSOInitRequest(`${redirectRules[0].redirect}`);
-              }}
-            />
-            {redirectRules.length > 1 && (
-              <DropdownSelector
-                id={"redirect-rules"}
-                options={ssoOptions}
-                selectedOption={""}
-                onSelect={(nValue) => submitSSOInitRequest(nValue)}
-                hideTriggerAction={() => {
-                  ssoOptionsSetOpen(false);
-                }}
-                open={ssoOptionsOpen}
-                anchorEl={anchorEl}
-                useAnchorWidth={true}
-              />
-            )}
-          </Box>
-        </Fragment>
-      )}
-
-      <form noValidate onSubmit={formSubmit} style={{ width: "100%" }}>
-        {((displaySSOForm && redirectRules.length > 0) ||
-          redirectRules.length === 0) && (
+    <DarkFormWrapper>
+      <React.Fragment>
+        {redirectRules.length > 0 && (
           <Fragment>
-            <Grid
-              container
-              sx={{
-                marginTop: redirectRules.length > 0 ? 55 : 0,
-              }}
-            >
-              <Grid item xs={12} sx={{ marginBottom: 14 }}>
-                <InputBox
-                  fullWidth
-                  id="accessKey"
-                  value={accessKey}
-                  onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                    dispatch(setAccessKey(e.target.value))
-                  }
-                  placeholder={useSTS ? "STS Username" : "Username"}
-                  name="accessKey"
-                  autoComplete="username"
-                  disabled={loginSending}
-                  startIcon={<UserFilledIcon />}
-                />
-              </Grid>
-              <Grid item xs={12} sx={{ marginBottom: useSTS ? 14 : 0 }}>
-                <InputBox
-                  fullWidth
-                  value={secretKey}
-                  onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                    dispatch(setSecretKey(e.target.value))
-                  }
-                  name="secretKey"
-                  type="password"
-                  id="secretKey"
-                  autoComplete="current-password"
-                  disabled={loginSending}
-                  placeholder={useSTS ? "STS Secret" : "Password"}
-                  startIcon={<LockFilledIcon />}
-                />
-              </Grid>
-              {useSTS && (
-                <Grid item xs={12}>
-                  <InputBox
-                    fullWidth
-                    id="sts"
-                    value={sts}
-                    onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                      dispatch(setSTS(e.target.value))
-                    }
-                    placeholder={"STS Token"}
-                    name="STS"
-                    autoComplete="sts"
-                    disabled={loginSending}
-                    startIcon={<PasswordKeyIcon />}
-                  />
-                </Grid>
-              )}
-            </Grid>
-
-            <Grid
-              item
-              xs={12}
-              sx={{
-                textAlign: "right",
-                marginTop: 30,
-              }}
-            >
+            <Box sx={{ marginBottom: 40 }}>
               <Button
-                type="submit"
-                variant="callAction"
-                color="primary"
-                id="do-login"
-                disabled={
-                  (!useSTS && (accessKey === "" || secretKey === "")) ||
-                  (useSTS &&
-                    (accessKey === "" || secretKey === "" || sts === "")) ||
-                  loginSending
+                id={"SSOSelector"}
+                variant={"subAction"}
+                label={
+                  redirectRules.length === 1
+                    ? `${redirectRules[0].displayName}${
+                        redirectRules[0].serviceType
+                          ? ` - ${redirectRules[0].serviceType}`
+                          : ""
+                      }`
+                    : `Login with SSO`
                 }
-                label={"Login"}
-                sx={{
-                  margin: "30px 0px 8px",
-                  height: 40,
-                  width: "100%",
-                  boxShadow: "none",
-                  padding: "16px 30px",
-                }}
                 fullWidth
+                sx={{ height: 50 }}
+                onClick={(e) => {
+                  if (redirectRules.length > 1) {
+                    ssoOptionsSetOpen(!ssoOptionsOpen);
+                    setAnchorEl(e.currentTarget);
+                    return;
+                  }
+                  submitSSOInitRequest(`${redirectRules[0].redirect}`);
+                }}
               />
-            </Grid>
-            <Grid
-              item
-              xs={12}
-              sx={{
-                height: 10,
-              }}
-            >
-              {loginSending && <ProgressBar />}
-            </Grid>
+              {redirectRules.length > 1 && (
+                <DropdownSelector
+                  id={"redirect-rules"}
+                  options={ssoOptions}
+                  selectedOption={""}
+                  onSelect={(nValue) => submitSSOInitRequest(nValue)}
+                  hideTriggerAction={() => {
+                    ssoOptionsSetOpen(false);
+                  }}
+                  open={ssoOptionsOpen}
+                  anchorEl={anchorEl}
+                  useAnchorWidth={true}
+                />
+              )}
+            </Box>
           </Fragment>
         )}
-        <Grid item xs={12} sx={{ marginTop: 45 }}>
-          <Select
-            id="alternativeMethods"
-            name="alternativeMethods"
-            fixedLabel="Other Authentication Methods"
-            options={selectOptions}
-            onChange={extraActionSelector}
-            value={""}
-          />
-        </Grid>
-      </form>
-    </React.Fragment>
+
+        <form noValidate onSubmit={formSubmit} style={{ width: "100%" }}>
+          {((displaySSOForm && redirectRules.length > 0) ||
+            redirectRules.length === 0) && (
+            <Fragment>
+              <Grid
+                container
+                sx={{
+                  marginTop: redirectRules.length > 0 ? 55 : 0,
+                }}
+              >
+                <Grid item xs={12} sx={{ marginBottom: 14 }}>
+                  <InputBox
+                    fullWidth
+                    id="accessKey"
+                    value={accessKey}
+                    onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                      dispatch(setAccessKey(e.target.value))
+                    }
+                    placeholder={useSTS ? "STS Username" : "Username"}
+                    name="accessKey"
+                    autoComplete="username"
+                    disabled={loginSending}
+                    spellCheck={false}
+                    startIcon={<UserFilledIcon />}
+                  />
+                </Grid>
+                <Grid item xs={12} sx={{ marginBottom: useSTS ? 14 : 0 }}>
+                  <InputBox
+                    fullWidth
+                    value={secretKey}
+                    onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                      dispatch(setSecretKey(e.target.value))
+                    }
+                    name="secretKey"
+                    type="password"
+                    id="secretKey"
+                    autoComplete="current-password"
+                    disabled={loginSending}
+                    spellCheck={false}
+                    placeholder={useSTS ? "STS Secret" : "Password"}
+                    startIcon={<LockFilledIcon />}
+                  />
+                </Grid>
+                {useSTS && (
+                  <Grid item xs={12}>
+                    <InputBox
+                      fullWidth
+                      id="sts"
+                      value={sts}
+                      onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                        dispatch(setSTS(e.target.value))
+                      }
+                      placeholder={"STS Token"}
+                      name="STS"
+                      autoComplete="sts"
+                      disabled={loginSending}
+                      startIcon={<PasswordKeyIcon />}
+                    />
+                  </Grid>
+                )}
+              </Grid>
+
+              <Grid
+                item
+                xs={12}
+                sx={{
+                  textAlign: "right",
+                  marginTop: 30,
+                }}
+              >
+                <Button
+                  type="submit"
+                  variant="callAction"
+                  // color="primary"
+                  id="do-login"
+                  disabled={
+                    (!useSTS && (accessKey === "" || secretKey === "")) ||
+                    (useSTS &&
+                      (accessKey === "" || secretKey === "" || sts === "")) ||
+                    loginSending
+                  }
+                  label={"Login"}
+                  sx={{
+                    margin: "30px 0px 8px",
+                    height: 40,
+                    width: "100%",
+                    boxShadow: "none",
+                    padding: "16px 30px",
+                  }}
+                  fullWidth
+                />
+              </Grid>
+              <Grid
+                item
+                xs={12}
+                sx={{
+                  height: 10,
+                }}
+              >
+                {loginSending && <ProgressBar />}
+              </Grid>
+            </Fragment>
+          )}
+          <Grid item xs={12} sx={{ marginTop: 45 }}>
+            <Select
+              id="alternativeMethods"
+              name="alternativeMethods"
+              fixedLabel="Other Authentication Methods"
+              options={selectOptions}
+              onChange={extraActionSelector}
+              value={""}
+            />
+          </Grid>
+        </form>
+      </React.Fragment>
+    </DarkFormWrapper>
   );
 };
 
