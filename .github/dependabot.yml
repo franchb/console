@@ -22,6 +22,6 @@ updates:
       day: "monday"
       time: "12:00"
   - package-ecosystem: "npm" # See documentation for possible values
-    directory: "/" # Location of package manifests
+    directory: "web-app/" # Location of package manifests
     schedule:
       interval: "daily"      
