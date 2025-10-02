@@ -9,7 +9,7 @@ require (
 	github.com/cheggaaa/pb/v3 v3.1.5
 	github.com/dustin/go-humanize v1.0.1
 	github.com/fatih/color v1.17.0
-	github.com/go-openapi/errors v0.22.0
+	github.com/go-openapi/errors v0.22.3
 	github.com/go-openapi/loads v0.22.0
 	github.com/go-openapi/runtime v0.28.0
 	github.com/go-openapi/spec v0.21.0
@@ -31,7 +31,7 @@ require (
 	github.com/mitchellh/go-homedir v1.1.0
 	github.com/rs/xid v1.6.0
 	github.com/secure-io/sio-go v0.3.1
-	github.com/stretchr/testify v1.9.0
+	github.com/stretchr/testify v1.11.1
 	github.com/tidwall/gjson v1.17.3
 	github.com/unrolled/secure v1.15.0
 	golang.org/x/crypto v0.42.0
