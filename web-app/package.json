@@ -26,7 +26,7 @@
     "react-virtualized": "^9.22.5",
     "react-window": "^1.8.10",
     "react-window-infinite-loader": "^1.0.9",
-    "recharts": "^2.12.7",
+    "recharts": "^3.2.1",
     "styled-components": "5.3.11",
     "superagent": "^9.0.2",
     "tinycolor2": "^1.6.0"
