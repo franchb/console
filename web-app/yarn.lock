@@ -1716,7 +1716,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/runtime@npm:^7.0.0, @babel/runtime@npm:^7.11.2, @babel/runtime@npm:^7.12.1, @babel/runtime@npm:^7.12.5, @babel/runtime@npm:^7.16.3, @babel/runtime@npm:^7.23.2, @babel/runtime@npm:^7.5.5, @babel/runtime@npm:^7.7.2, @babel/runtime@npm:^7.8.7, @babel/runtime@npm:^7.9.2":
+"@babel/runtime@npm:^7.11.2, @babel/runtime@npm:^7.12.1, @babel/runtime@npm:^7.12.5, @babel/runtime@npm:^7.16.3, @babel/runtime@npm:^7.23.2, @babel/runtime@npm:^7.5.5, @babel/runtime@npm:^7.7.2, @babel/runtime@npm:^7.8.7, @babel/runtime@npm:^7.9.2":
   version: 7.27.6
   resolution: "@babel/runtime@npm:7.27.6"
   checksum: 10c0/89726be83f356f511dcdb74d3ea4d873a5f0cf0017d4530cb53aa27380c01ca102d573eff8b8b77815e624b1f8c24e7f0311834ad4fb632c90a770fda00bd4c8
@@ -4002,12 +4002,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react-window@npm:*, @types/react-window@npm:^1.8.8":
+"@types/react-window@npm:*":
   version: 1.8.8
   resolution: "@types/react-window@npm:1.8.8"
   dependencies:
     "@types/react": "npm:*"
   checksum: 10c0/2170a3957752603e8b994840c5d31b72ddf94c427c0f42b0175b343cc54f50fe66161d8871e11786ec7a59906bd33861945579a3a8f745455a3744268ec1069f
+  languageName: node
+  linkType: hard
+
+"@types/react-window@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "@types/react-window@npm:2.0.0"
+  dependencies:
+    react-window: "npm:*"
+  checksum: 10c0/4de05bf54c3947a68878f1ddcc019db27811d2390aae2e4eb1ab83bff134d6a2f20318555e06b891234df946528470d7c01e43dff759209ec75c54cbda034acf
   languageName: node
   linkType: hard
 
@@ -12236,13 +12245,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"memoize-one@npm:>=3.1.1 <6":
-  version: 5.2.1
-  resolution: "memoize-one@npm:5.2.1"
-  checksum: 10c0/fd22dbe9a978a2b4f30d6a491fc02fb90792432ad0dab840dc96c1734d2bd7c9cdeb6a26130ec60507eb43230559523615873168bcbe8fafab221c30b11d54c1
-  languageName: node
-  linkType: hard
-
 "merge-descriptors@npm:1.0.3":
   version: 1.0.3
   resolution: "merge-descriptors@npm:1.0.3"
@@ -15497,16 +15499,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-window@npm:^1.8.10":
-  version: 1.8.11
-  resolution: "react-window@npm:1.8.11"
-  dependencies:
-    "@babel/runtime": "npm:^7.0.0"
-    memoize-one: "npm:>=3.1.1 <6"
+"react-window@npm:*, react-window@npm:^2.2.0":
+  version: 2.2.0
+  resolution: "react-window@npm:2.2.0"
   peerDependencies:
-    react: ^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
-    react-dom: ^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
-  checksum: 10c0/5ae8da1bc5c47d8f0a428b28a600256e2db511975573e52cb65a9b27ed1a0e5b9f7b3bee5a54fb0da93956d782c24010be434be451072f46ba5a89159d2b3944
+    react: ^18.0.0 || ^19.0.0
+    react-dom: ^18.0.0 || ^19.0.0
+  checksum: 10c0/44bd1ffb544d2b6f7eaac920ccebdd8204f6c7178294312e435028e2beb657038e26f2dd64ab252ca6d3ba511be6ca0f3eb377e91841107d1da97dd234ff9840
   languageName: node
   linkType: hard
 
@@ -18817,7 +18816,7 @@ __metadata:
     "@types/react-dom": "npm:18.3.0"
     "@types/react-redux": "npm:^7.1.33"
     "@types/react-virtualized": "npm:^9.21.30"
-    "@types/react-window": "npm:^1.8.8"
+    "@types/react-window": "npm:^2.0.0"
     "@types/react-window-infinite-loader": "npm:^1.0.9"
     "@types/recharts": "npm:^1.8.29"
     "@types/superagent": "npm:^4.1.24"
@@ -18849,7 +18848,7 @@ __metadata:
     react-scripts: "npm:5.0.1"
     react-use-websocket: "npm:^4.8.1"
     react-virtualized: "npm:^9.22.5"
-    react-window: "npm:^1.8.10"
+    react-window: "npm:^2.2.0"
     react-window-infinite-loader: "npm:^1.0.9"
     recharts: "npm:^2.12.7"
     styled-components: "npm:5.3.11"
